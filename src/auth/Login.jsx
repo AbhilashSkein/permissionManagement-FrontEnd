@@ -12,6 +12,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import ForgotPassword from "../components/admin/ForgotPassword";
+import GoogleSignIn from "../components/GoogleSignIn";
 const Login = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -54,7 +55,7 @@ const Login = () => {
       .post("http://localhost:8080/demo/user/login", formData)
       .then((response) => (response ? setResData(response?.data) : null))
       .catch((err) => console.error(err));
-    // navigate('/adminhome');
+    navigate('/adminhome');
   };
 
   useEffect(() => {
@@ -103,6 +104,7 @@ const Login = () => {
           </Button>
           <ForgotPassword />
           <Divider className="loginDivider">or</Divider>
+          <GoogleSignIn />
         </form>
       </Card>
     </>
